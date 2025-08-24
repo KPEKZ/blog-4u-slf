@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "Qy8myvw7nCg=",
+  "success": true,
+  "projectFilePath": "/home/eduard-kopylov/pets/blog-4u-slf/backend/Blog4uSlf.Web/Blog4uSlf.Web.csproj",
+  "expectedPackageFiles": [
+    "/home/eduard-kopylov/.nuget/packages/microsoft.aspnetcore.openapi/9.0.7/microsoft.aspnetcore.openapi.9.0.7.nupkg.sha512",
+    "/home/eduard-kopylov/.nuget/packages/microsoft.openapi/1.6.17/microsoft.openapi.1.6.17.nupkg.sha512"
+  ],
+  "logs": []
+}

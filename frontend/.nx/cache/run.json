@@ -1,0 +1,9 @@
+{
+  "run": {
+    "command": "nx run blog-4u-slf:serve",
+    "startTime": "2025-08-24T14:50:50.491Z",
+    "endTime": "2025-08-24T14:57:10.808Z",
+    "inner": false
+  },
+  "tasks": []
+}

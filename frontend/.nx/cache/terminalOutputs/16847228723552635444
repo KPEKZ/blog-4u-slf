@@ -1,0 +1,179 @@
+[?25l[2m◼[22m Building...
+[2K[1A[2K[G[33m⠋[39m Building...
+[2K[1A[2K[G[33m⠙[39m Building...
+[2K[1A[2K[G[33m⠹[39m Building...
+[2K[1A[2K[G[33m⠸[39m Building...
+[2K[1A[2K[G[33m⠼[39m Building...
+[2K[1A[2K[G[33m⠴[39m Building...
+[2K[1A[2K[G[33m⠦[39m Building...
+[2K[1A[2K[G[33m⠧[39m Building...
+[2K[1A[2K[G[33m⠇[39m Building...
+[2K[1A[2K[G[33m⠏[39m Building...
+[2K[1A[2K[G[33m⠋[39m Building...
+[2K[1A[2K[G[33m⠙[39m Building...
+[2K[1A[2K[G[33m⠹[39m Building...
+[2K[1A[2K[G[33m⠸[39m Building...
+[2K[1A[2K[G[33m⠼[39m Building...
+[2K[1A[2K[G[33m⠴[39m Building...
+[2K[1A[2K[G[33m⠦[39m Building...
+[2K[1A[2K[G[33m⠧[39m Building...
+[2K[1A[2K[G[33m⠇[39m Building...
+[2K[1A[2K[G[33m⠏[39m Building...
+[2K[1A[2K[G[33m⠋[39m Building...
+[2K[1A[2K[G[33m⠙[39m Building...
+[2K[1A[2K[G[33m⠹[39m Building...
+[2K[1A[2K[G[33m⠸[39m Building...
+[2K[1A[2K[G[33m⠼[39m Building...
+[2K[1A[2K[G[33m⠴[39m Building...
+[2K[1A[2K[G[33m⠦[39m Building...
+[2K[1A[2K[G[32m✔[39m Building...
+[2K[1A[2K[G[?25h[37m[35mBrowser bundles[39m[37m     [39m
+[37m[1mInitial chunk files[22m [2m | [22m[1mNames[22m           [2m | [22m [1mRaw size[22m[39m
+[37m[32mstyles.css[39m[37m          [2m | [22m[2mstyles[22m          [2m | [22m[36m235.43 kB[39m[37m[2m | [22m[39m
+[37m[32mmain.js[39m[37m             [2m | [22m[2mmain[22m            [2m | [22m [36m75.09 kB[39m[37m[2m | [22m[39m
+[37m[32mpolyfills.js[39m[37m        [2m | [22m[2mpolyfills[22m       [2m | [22m [36m95 bytes[39m[37m[2m | [22m[39m
+[37m[39m
+[37m[1m [22m                   [2m | [22m[1mInitial total[22m   [2m | [22m[1m310.61 kB[22m[39m
+[37m[39m
+[37m[39m
+[37m[35mServer bundles[39m[37m      [39m
+[37m[1mInitial chunk files[22m [2m | [22m[1mNames[22m           [2m | [22m [1mRaw size[22m[39m
+[37m[32mmain.server.mjs[39m[37m     [2m | [22m[2mmain.server[22m     [2m | [22m [36m76.38 kB[39m[37m[2m | [22m[39m
+[37m[32mserver.mjs[39m[37m          [2m | [22m[2mserver[22m          [2m | [22m  [36m1.88 kB[39m[37m[2m | [22m[39m
+[37m[32mpolyfills.server.mjs[39m[37m[2m | [22m[2mpolyfills.server[22m[2m | [22m[36m266 bytes[39m[37m[2m | [22m[39m
+[37m[39m
+[37mApplication bundle generation complete. [3.179 seconds][39m
+[37m[39m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: TuiRoot is not used within the template of App[0m [1m[35m[plugin angular-compiler][0m[39m[22m
+[1m[33m[39m[22m
+[1m[33m    apps/blog-4u-slf/src/app/app.ts:7:37:[39m[22m
+[1m[33m[37m      7 │   imports: [NxWelcome, RouterModule, [32mTuiRoot[37m],[39m[22m
+[1m[33m        ╵                                      [32m~~~~~~~[0m[39m[22m
+[1m[33m[39m[22m
+[1m[33m[39m[22m
+[37mWatch mode enabled. Watching for file changes...[39m
+[37mNOTE: Raw file sizes do not reflect development server per-request transformations.[39m
+[2m5:50:55 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m Re-optimizing dependencies because lockfile has changed
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m5:50:55 PM[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m Re-optimizing dependencies because lockfile has changed [33m(x2)[39m
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://localhost:[1m4200[22m/[39m
+[2m[32m  ➜[39m[22m[2m  press [22m[1mh + enter[22m[2m to show help[22m
+ɵNotFound: NG0201: No provider found for `InjectionToken @ngrx/store Root Store Provider`. Find more at https://angular.dev/errors/NG0201
+    at createRuntimeError (/home/eduard-kopylov/pets/blog-4u-slf/frontend/.angular/cache/20.1.6/blog-4u-slf/vite/deps_ssr/chunk-ZFMEDZSJ.js:10913:17)
+    at NullInjector.get (/home/eduard-kopylov/pets/blog-4u-slf/frontend/.angular/cache/20.1.6/blog-4u-slf/vite/deps_ssr/chunk-ZFMEDZSJ.js:11200:21)
+    at R3Injector.get (/home/eduard-kopylov/pets/blog-4u-slf/frontend/.angular/cache/20.1.6/blog-4u-slf/vite/deps_ssr/chunk-ZFMEDZSJ.js:11559:27)
+    at R3Injector.get (/home/eduard-kopylov/pets/blog-4u-slf/frontend/.angular/cache/20.1.6/blog-4u-slf/vite/deps_ssr/chunk-ZFMEDZSJ.js:11559:27)
+    at R3Injector.retrieve (/home/eduard-kopylov/pets/blog-4u-slf/frontend/.angular/cache/20.1.6/blog-4u-slf/vite/deps_ssr/chunk-ZFMEDZSJ.js:11464:19)
+    at injectInjectorOnly (/home/eduard-kopylov/pets/blog-4u-slf/frontend/.angular/cache/20.1.6/blog-4u-slf/vite/deps_ssr/chunk-ZFMEDZSJ.js:10988:35)
+    at ɵɵinject (/home/eduard-kopylov/pets/blog-4u-slf/frontend/.angular/cache/20.1.6/blog-4u-slf/vite/deps_ssr/chunk-ZFMEDZSJ.js:11000:59)
+    at inject2 (/home/eduard-kopylov/pets/blog-4u-slf/frontend/.angular/cache/20.1.6/blog-4u-slf/vite/deps_ssr/chunk-ZFMEDZSJ.js:11009:10)
+    at eval (/home/eduard-kopylov/pets/blog-4u-slf/frontend/.angular/cache/20.1.6/blog-4u-slf/vite/deps_ssr/@ngrx_effects.js:1512:11)
+    at R3Injector.resolveInjectorInitializers (/home/eduard-kopylov/pets/blog-4u-slf/frontend/.angular/cache/20.1.6/blog-4u-slf/vite/deps_ssr/chunk-ZFMEDZSJ.js:11596:9)
+ɵNotFound: NG0201: No provider found for `InjectionToken @ngrx/store Root Store Provider`. Find more at https://angular.dev/errors/NG0201
+    at createRuntimeError (/home/eduard-kopylov/pets/blog-4u-slf/frontend/.angular/cache/20.1.6/blog-4u-slf/vite/deps_ssr/chunk-ZFMEDZSJ.js:10913:17)
+    at NullInjector.get (/home/eduard-kopylov/pets/blog-4u-slf/frontend/.angular/cache/20.1.6/blog-4u-slf/vite/deps_ssr/chunk-ZFMEDZSJ.js:11200:21)
+    at R3Injector.get (/home/eduard-kopylov/pets/blog-4u-slf/frontend/.angular/cache/20.1.6/blog-4u-slf/vite/deps_ssr/chunk-ZFMEDZSJ.js:11559:27)
+    at R3Injector.get (/home/eduard-kopylov/pets/blog-4u-slf/frontend/.angular/cache/20.1.6/blog-4u-slf/vite/deps_ssr/chunk-ZFMEDZSJ.js:11559:27)
+    at R3Injector.retrieve (/home/eduard-kopylov/pets/blog-4u-slf/frontend/.angular/cache/20.1.6/blog-4u-slf/vite/deps_ssr/chunk-ZFMEDZSJ.js:11464:19)
+    at injectInjectorOnly (/home/eduard-kopylov/pets/blog-4u-slf/frontend/.angular/cache/20.1.6/blog-4u-slf/vite/deps_ssr/chunk-ZFMEDZSJ.js:10988:35)
+    at ɵɵinject (/home/eduard-kopylov/pets/blog-4u-slf/frontend/.angular/cache/20.1.6/blog-4u-slf/vite/deps_ssr/chunk-ZFMEDZSJ.js:11000:59)
+    at inject2 (/home/eduard-kopylov/pets/blog-4u-slf/frontend/.angular/cache/20.1.6/blog-4u-slf/vite/deps_ssr/chunk-ZFMEDZSJ.js:11009:10)
+    at eval (/home/eduard-kopylov/pets/blog-4u-slf/frontend/.angular/cache/20.1.6/blog-4u-slf/vite/deps_ssr/@ngrx_effects.js:1512:11)
+    at R3Injector.resolveInjectorInitializers (/home/eduard-kopylov/pets/blog-4u-slf/frontend/.angular/cache/20.1.6/blog-4u-slf/vite/deps_ssr/chunk-ZFMEDZSJ.js:11596:9)
+ɵNotFound: NG0201: No provider found for `InjectionToken @ngrx/store Root Store Provider`. Find more at https://angular.dev/errors/NG0201
+    at createRuntimeError (/home/eduard-kopylov/pets/blog-4u-slf/frontend/.angular/cache/20.1.6/blog-4u-slf/vite/deps_ssr/chunk-ZFMEDZSJ.js:10913:17)
+    at NullInjector.get (/home/eduard-kopylov/pets/blog-4u-slf/frontend/.angular/cache/20.1.6/blog-4u-slf/vite/deps_ssr/chunk-ZFMEDZSJ.js:11200:21)
+    at R3Injector.get (/home/eduard-kopylov/pets/blog-4u-slf/frontend/.angular/cache/20.1.6/blog-4u-slf/vite/deps_ssr/chunk-ZFMEDZSJ.js:11559:27)
+    at R3Injector.get (/home/eduard-kopylov/pets/blog-4u-slf/frontend/.angular/cache/20.1.6/blog-4u-slf/vite/deps_ssr/chunk-ZFMEDZSJ.js:11559:27)
+    at R3Injector.retrieve (/home/eduard-kopylov/pets/blog-4u-slf/frontend/.angular/cache/20.1.6/blog-4u-slf/vite/deps_ssr/chunk-ZFMEDZSJ.js:11464:19)
+    at injectInjectorOnly (/home/eduard-kopylov/pets/blog-4u-slf/frontend/.angular/cache/20.1.6/blog-4u-slf/vite/deps_ssr/chunk-ZFMEDZSJ.js:10988:35)
+    at ɵɵinject (/home/eduard-kopylov/pets/blog-4u-slf/frontend/.angular/cache/20.1.6/blog-4u-slf/vite/deps_ssr/chunk-ZFMEDZSJ.js:11000:59)
+    at inject2 (/home/eduard-kopylov/pets/blog-4u-slf/frontend/.angular/cache/20.1.6/blog-4u-slf/vite/deps_ssr/chunk-ZFMEDZSJ.js:11009:10)
+    at eval (/home/eduard-kopylov/pets/blog-4u-slf/frontend/.angular/cache/20.1.6/blog-4u-slf/vite/deps_ssr/@ngrx_effects.js:1512:11)
+    at R3Injector.resolveInjectorInitializers (/home/eduard-kopylov/pets/blog-4u-slf/frontend/.angular/cache/20.1.6/blog-4u-slf/vite/deps_ssr/chunk-ZFMEDZSJ.js:11596:9)
+[?25l[2m◼[22m Changes detected. Rebuilding...
+[2K[1A[2K[G[33m⠋[39m Changes detected. Rebuilding...
+[2K[1A[2K[G[33m⠙[39m Changes detected. Rebuilding...
+[2K[1A[2K[G[33m⠹[39m Changes detected. Rebuilding...
+[2K[1A[2K[G[33m⠸[39m Changes detected. Rebuilding...
+[2K[1A[2K[G[32m✔[39m Changes detected. Rebuilding...
+[2K[1A[2K[G[?25h[37mApplication bundle generation failed. [0.341 seconds][39m
+[37m[39m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: TuiRoot is not used within the template of App[0m [1m[35m[plugin angular-compiler][0m[39m[22m
+[1m[33m[39m[22m
+[1m[33m    apps/blog-4u-slf/src/app/app.ts:7:37:[39m[22m
+[1m[33m[37m      7 │   imports: [NxWelcome, RouterModule, [32mTuiRoot[37m],[39m[22m
+[1m[33m        ╵                                      [32m~~~~~~~[0m[39m[22m
+[1m[33m[39m[22m
+[1m[33m[39m[22m
+[1m[31m[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'provideStore'.[0m [1m[35m[plugin angular-compiler][0m[39m[22m
+[1m[31m[39m[22m
+[1m[31m    apps/blog-4u-slf/src/app/app.config.ts:25:4:[39m[22m
+[1m[31m[37m      25 │     [32mprovideStore[37m[39m[22m
+[1m[31m         ╵     [32m~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[?25l[2m◼[22m Changes detected. Rebuilding...
+[2K[1A[2K[G[33m⠋[39m Changes detected. Rebuilding...
+[2K[1A[2K[G[33m⠙[39m Changes detected. Rebuilding...
+[2K[1A[2K[G[33m⠹[39m Changes detected. Rebuilding...
+[2K[1A[2K[G[32m✔[39m Changes detected. Rebuilding...
+[2K[1A[2K[G[?25h[37m[35mBrowser bundles[39m[37m     [39m
+[37m[1mInitial chunk files[22m [2m | [22m[1mNames[22m           [2m | [22m [1mRaw size[22m[39m
+[37m[32mstyles.css[39m[37m          [2m | [22m[2mstyles[22m          [2m | [22m[36m235.43 kB[39m[37m[2m | [22m[39m
+[37m[32mmain.js[39m[37m             [2m | [22m[2mmain[22m            [2m | [22m [36m75.15 kB[39m[37m[2m | [22m[39m
+[37m[32mpolyfills.js[39m[37m        [2m | [22m[2mpolyfills[22m       [2m | [22m [36m95 bytes[39m[37m[2m | [22m[39m
+[37m[39m
+[37m[1m [22m                   [2m | [22m[1mInitial total[22m   [2m | [22m[1m310.67 kB[22m[39m
+[37m[39m
+[37m[39m
+[37m[35mServer bundles[39m[37m      [39m
+[37m[1mInitial chunk files[22m [2m | [22m[1mNames[22m           [2m | [22m [1mRaw size[22m[39m
+[37m[32mmain.server.mjs[39m[37m     [2m | [22m[2mmain.server[22m     [2m | [22m [36m76.44 kB[39m[37m[2m | [22m[39m
+[37m[32mserver.mjs[39m[37m          [2m | [22m[2mserver[22m          [2m | [22m  [36m1.88 kB[39m[37m[2m | [22m[39m
+[37m[32mpolyfills.server.mjs[39m[37m[2m | [22m[2mpolyfills.server[22m[2m | [22m[36m266 bytes[39m[37m[2m | [22m[39m
+[37m[39m
+[37mApplication bundle generation complete. [0.249 seconds][39m
+[37m[39m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: TuiRoot is not used within the template of App[0m [1m[35m[plugin angular-compiler][0m[39m[22m
+[1m[33m[39m[22m
+[1m[33m    apps/blog-4u-slf/src/app/app.ts:7:37:[39m[22m
+[1m[33m[37m      7 │   imports: [NxWelcome, RouterModule, [32mTuiRoot[37m],[39m[22m
+[1m[33m        ╵                                      [32m~~~~~~~[0m[39m[22m
+[1m[33m[39m[22m
+[1m[33m[39m[22m
+[2m5:55:03 PM[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32m✨ new dependencies optimized: [33m@ngrx/store[32m[39m
+[2m5:55:03 PM[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32m✨ optimized dependencies changed. reloading[39m
+[37mPage reload sent to client(s).[39m
+[2m5:55:10 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32m✨ new dependencies optimized: [33m@ngrx/store[32m[39m
+[2m5:55:10 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32m✨ optimized dependencies changed. reloading[39m
+[?25l[2m◼[22m Changes detected. Rebuilding...
+[2K[1A[2K[G[33m⠋[39m Changes detected. Rebuilding...
+[2K[1A[2K[G[33m⠙[39m Changes detected. Rebuilding...
+[2K[1A[2K[G[32m✔[39m Changes detected. Rebuilding...
+[2K[1A[2K[G[?25h[37m[39m
+[37mNo output file changes.[39m
+[37m[39m
+[37mApplication bundle generation complete. [0.204 seconds][39m
+[37m[39m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: TuiRoot is not used within the template of App[0m [1m[35m[plugin angular-compiler][0m[39m[22m
+[1m[33m[39m[22m
+[1m[33m    apps/blog-4u-slf/src/app/app.ts:7:37:[39m[22m
+[1m[33m[37m      7 │   imports: [NxWelcome, RouterModule, [32mTuiRoot[37m],[39m[22m
+[1m[33m        ╵                                      [32m~~~~~~~[0m[39m[22m
+[1m[33m[39m[22m
+[1m[33m[39m[22m
+^C[?25h
