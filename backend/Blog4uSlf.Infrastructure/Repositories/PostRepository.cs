@@ -74,4 +74,11 @@ public class PostRepository(BlogDbContext context) : IPostRepository
 
     return postDb;
   }
+
+  public Task<bool> SlugExistsAsync(string slug, CancellationToken ct)
+  {
+    return _context.Posts
+      .AsNoTracking()
+      .AnyAsync(p => p.Slug == slug, ct);
+  }
 }

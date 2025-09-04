@@ -1,5 +1,7 @@
 using Blog4uSlf.Application.Abstractions.Repositories;
 using Blog4uSlf.Application.Abstractions.Services;
+using Blog4uSlf.Application.Exceptions;
+using Blog4uSlf.Application.Exceptions.Posts;
 using Blog4uSlf.Domain.Entities.Posts;
 
 namespace Blog4uSlf.Application.Services;
@@ -12,12 +14,26 @@ public class PostService(IPostRepository postRepository) : IPostService
   {
     try
     {
+      var slugAlreadyExists = await _postRepository.SlugExistsAsync(postDto.Slug, ct);
+
+      if (slugAlreadyExists)
+      {
+        throw new PostDuplicateSlugException(postDto.Slug);
+      }
 
       var createdPost = await _postRepository.AddAsync(postDto, ct);
 
       return createdPost;
     }
-    catch (Exception ex)
+    catch (PostDuplicateSlugException)
+    {
+      throw;
+    }
+    catch (AppException)
+    {
+      throw;
+    }
+    catch (Exception)
     {
       throw;
     }
@@ -27,9 +43,18 @@ public class PostService(IPostRepository postRepository) : IPostService
   {
     try
     {
+      await GetByIdOrThrowNotFoundErrorAsync(id, ct);
       await _postRepository.DeleteByIdAsync(id, ct);
     }
-    catch (Exception ex)
+    catch (PostNotFoundException)
+    {
+      throw;
+    }
+    catch (AppException)
+    {
+      throw;
+    }
+    catch (Exception)
     {
       throw;
     }
@@ -41,12 +66,27 @@ public class PostService(IPostRepository postRepository) : IPostService
     {
       var post = await _postRepository.GetByIdAsync(id, ct);
 
-      return post is not null ? post : throw new Exception("Post not found");
+      return post ?? throw new PostNotFoundException(id);
     }
-    catch (Exception ex)
+    catch (PostNotFoundException)
     {
       throw;
     }
+    catch (AppException)
+    {
+      throw;
+    }
+    catch (Exception)
+    {
+      throw;
+    }
+  }
+
+  public async Task<Post> GetByIdOrThrowNotFoundErrorAsync(Guid id, CancellationToken ct)
+  {
+    var post = await _postRepository.GetByIdAsync(id, ct);
+
+    return post ?? throw new PostNotFoundException(id);
   }
 
   public async Task<IReadOnlyCollection<Post>> GetLatestsAsync(int take, int skip, CancellationToken ct)
@@ -55,23 +95,39 @@ public class PostService(IPostRepository postRepository) : IPostService
     {
       return await _postRepository.GetLatestAsync(take, skip, ct);
     }
-    catch (Exception ex)
+    catch (AppException)
     {
       throw;
     }
+    catch (Exception)
+    {
+      throw;
+    }
+  }
+
+  public async Task<bool> SlugExistsAsync(string slug, CancellationToken ct)
+  {
+    return await _postRepository.SlugExistsAsync(slug, ct);
   }
 
   public async Task<Post> UpdateByIdAsync(Guid id, PostUpdate postDto, CancellationToken ct)
   {
     try
     {
-      var post = await _postRepository.GetByIdAsync(id, ct) ?? throw new Exception("Post not found");
+      await GetByIdOrThrowNotFoundErrorAsync(id, ct);
+      var updatedPost = await _postRepository.UpdateByIdAsync(id, postDto, ct);
 
-      await _postRepository.UpdateByIdAsync(id, postDto, ct);
-
-      return post;
+      return updatedPost;
     }
-    catch (Exception ex)
+    catch (PostNotFoundException)
+    {
+      throw;
+    }
+    catch (AppException)
+    {
+      throw;
+    }
+    catch (Exception)
     {
       throw;
     }
