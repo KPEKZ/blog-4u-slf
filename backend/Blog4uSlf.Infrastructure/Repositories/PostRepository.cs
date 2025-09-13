@@ -3,6 +3,7 @@ using Blog4uSlf.Application.Abstractions.Repositories;
 using Blog4uSlf.Domain.Entities.Posts;
 using Blog4uSlf.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
+using Mapster;
 
 namespace Blog4uSlf.Infrastructure.Repositories;
 
@@ -10,19 +11,13 @@ public class PostRepository(BlogDbContext context) : IPostRepository
 {
   private readonly BlogDbContext _context = context;
 
-  public async Task<Post> AddAsync(PostCreate postCreate, CancellationToken ct)
+  public async Task<Post> AddAsync(Post postCreate, CancellationToken ct)
   {
-    var post = new Post
-    {
-      Title = postCreate.Title,
-      Content = postCreate.Content,
-      Slug = postCreate.Slug
-    };
+    var post = await _context.AddAsync(postCreate, ct);
 
-    await _context.AddAsync(post, ct);
     await _context.SaveChangesAsync(ct);
 
-    return post;
+    return post.Entity;
   }
 
   public async Task DeleteByIdAsync(Guid id, CancellationToken ct)
@@ -44,6 +39,7 @@ public class PostRepository(BlogDbContext context) : IPostRepository
       .OrderByDescending(p => p.CreatedAt)
       .Skip(skip)
       .Take(take)
+      .Select(postDb => postDb.Adapt<Post>())
       .ToListAsync(ct);
 
     return new ReadOnlyCollection<Post>(posts);
@@ -51,12 +47,14 @@ public class PostRepository(BlogDbContext context) : IPostRepository
 
   public async Task<Post?> GetByIdAsync(Guid id, CancellationToken ct)
   {
-    return await _context.Posts
+    var post = await _context.Posts
       .AsNoTracking()
       .FirstOrDefaultAsync(p => p.Id == id, ct);
+
+    return post?.Adapt<Post>();
   }
 
-  public async Task<Post?> UpdateByIdAsync(Guid id, PostUpdate postUpdate, CancellationToken ct)
+  public async Task<Post?> UpdateByIdAsync(Guid id, Post postUpdate, CancellationToken ct)
   {
     var postDb = await _context.Posts.FindAsync(id, ct);
 
@@ -72,7 +70,7 @@ public class PostRepository(BlogDbContext context) : IPostRepository
 
     await _context.SaveChangesAsync(ct);
 
-    return postDb;
+    return postDb?.Adapt<Post>();
   }
 
   public Task<bool> SlugExistsAsync(string slug, CancellationToken ct)

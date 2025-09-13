@@ -11,10 +11,10 @@ public interface IPostService
   /// <summary>
   /// Creates a new post.
   /// </summary>
-  /// <param name="postDto">The data for the post to create.</param>
+  /// <param name="postCreateDto">The data for the post to create.</param>
   /// <param name="ct">A cancellation token.</param>
   /// <returns>The created <see cref="Post"/>.</returns>
-  Task<Post> CreateAsync(PostCreate postDto, CancellationToken ct);
+  Task<Post> CreateAsync(Post postCreateDto, CancellationToken ct);
 
   /// <summary>
   /// Gets a post by its unique identifier.
@@ -46,10 +46,10 @@ public interface IPostService
   /// Updates a post by its unique identifier.
   /// </summary>
   /// <param name="id">The unique identifier of the post.</param>
-  /// <param name="postDto">The updated post data.</param>
+  /// <param name="postUpdateDto">The updated post data.</param>
   /// <param name="ct">A cancellation token.</param>
   /// <returns>The updated <see cref="Post"/>.</returns>
-  Task<Post> UpdateByIdAsync(Guid id, PostUpdate postDto, CancellationToken ct);
+  Task<Post> UpdateByIdAsync(Guid id, Post postUpdateDto, CancellationToken ct);
 
   /// <summary>
   /// Deletes a post by its unique identifier.

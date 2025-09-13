@@ -30,7 +30,7 @@ public interface IPostRepository
   /// <param name="postCreate">The data for the post to create.</param>
   /// <param name="ct">A cancellation token.</param>
   /// <returns>The created post.</returns>
-  Task<Post> AddAsync(PostCreate postCreate, CancellationToken ct);
+  Task<Post> AddAsync(Post postCreate, CancellationToken ct);
 
   /// <summary>
   /// Updates an existing post by its unique identifier.
@@ -39,7 +39,7 @@ public interface IPostRepository
   /// <param name="postUpdate">The updated post data.</param>
   /// <param name="ct">A cancellation token.</param>
   /// <returns>The updated post if found; otherwise, <c>null</c>.</returns>
-  Task<Post?> UpdateByIdAsync(Guid id, PostUpdate postUpdate, CancellationToken ct);
+  Task<Post?> UpdateByIdAsync(Guid id, Post postUpdate, CancellationToken ct);
 
   /// <summary>
   /// Deletes a post by its unique identifier.

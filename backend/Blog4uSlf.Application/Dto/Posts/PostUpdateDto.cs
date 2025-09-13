@@ -1,6 +1,12 @@
 namespace Blog4uSlf.Application.Dto.Posts;
 
-public sealed record PostUpdateDto(string Title,
-  string Content,
-  string Slug
+/// <summary>
+/// Data Transfer Object for updating a blog post.
+/// </summary>
+/// <param name="Title">The updated title of the post. Optional.</param>
+/// <param name="Content">The updated content of the post. Optional.</param>
+/// <param name="Slug">The updated URL-friendly slug for the post. Optional.</param>
+public sealed record PostUpdateDto(string? Title,
+  string? Content,
+  string? Slug
 );

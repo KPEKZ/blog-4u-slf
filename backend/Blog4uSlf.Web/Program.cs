@@ -2,8 +2,10 @@ using Blog4uSlf.Infrastructure;
 using Blog4uSlf.Web.Extensions;
 using Blog4uSlf.Web.Mapping;
 using Blog4uSlf.Web.Middlewares;
+using FluentValidation.AspNetCore;
 using Mapster;
 using MapsterMapper;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,10 +16,16 @@ builder.Services.AddSingleton(TypeAdapterConfig.GlobalSettings);
 builder.Services.AddScoped<IMapper, ServiceMapper>();
 
 // Controllers
-builder.Services.AddControllers().AddNewtonsoftJson(options =>
+builder.Services.AddControllers().AddJsonOptions(options =>
 {
-  options.SerializerSettings.Converters.Add(new Newtonsoft.Json.Converters.StringEnumConverter());
+  options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+  options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
+  options.JsonSerializerOptions.WriteIndented = builder.Environment.IsDevelopment();
 });
+
+// Validation
+builder.Services.AddFluentValidation();
+builder.Services.AddFluentValidationAutoValidation();
 
 // Infrastructure (EF Core, репозитории)
 builder.Services.AddInfrastructure(builder.Configuration);

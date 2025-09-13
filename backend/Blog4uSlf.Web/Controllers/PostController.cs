@@ -64,7 +64,7 @@ public class PostController(IPostService postService) : ControllerBase
   [SwaggerResponse(StatusCodes.Status500InternalServerError, description: "Internal server error.")]
   public async Task<IActionResult> Create([FromBody] PostCreateDto postDto, CancellationToken ct)
   {
-    var post = postDto.Adapt<PostCreate>();
+    var post = postDto.Adapt<Post>();
     var created = await _postService.CreateAsync(post, ct);
     return CreatedAtAction(nameof(GetById), new { id = created.Id }, created.Adapt<PostDto>());
   }
@@ -82,7 +82,7 @@ public class PostController(IPostService postService) : ControllerBase
   [SwaggerResponse(StatusCodes.Status500InternalServerError, description: "Internal server error.")]
   public async Task<IActionResult> UpdatePostById([FromRoute] Guid id, [FromBody] PostUpdateDto postDto, CancellationToken ct)
   {
-    var post = postDto.Adapt<PostUpdate>();
+    var post = postDto.Adapt<Post>();
     var updated = await _postService.UpdateByIdAsync(id, post, ct);
     return Ok(updated.Adapt<PostDto>());
   }
