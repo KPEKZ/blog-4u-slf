@@ -5,9 +5,18 @@ using Blog4uSlf.Web.Middlewares;
 using FluentValidation.AspNetCore;
 using Mapster;
 using MapsterMapper;
+using Serilog;
 using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Logging
+Log.Logger = new LoggerConfiguration()
+  .ReadFrom.Configuration(builder.Configuration)
+  .Enrich.FromLogContext()
+  .CreateLogger();
+builder.Host.UseSerilog();
+
 
 // Mapster
 MappingConfig.Register();
@@ -45,6 +54,18 @@ builder.Services.AddOpenApiWithSwagger();
 
 var app = builder.Build();
 
+app.UseSerilogRequestLogging(options =>
+{
+  options.MessageTemplate =
+      "HTTP {RequestMethod} {RequestPath} responded {StatusCode} in {Elapsed:0.0000} ms";
+
+  options.EnrichDiagnosticContext = (diagnosticContext, httpContext) =>
+  {
+    diagnosticContext.Set("UserAgent", httpContext.Request.Headers["User-Agent"].ToString());
+    diagnosticContext.Set("Host", httpContext.Request.Host.Value);
+  };
+});
+
 app.UseExceptionHandler();
 app.UseStatusCodePages();
 
@@ -59,4 +80,16 @@ app.UseOpenApiWithSwaggerUi();
 
 app.MapControllers();
 
-app.Run();
+try
+{
+  Log.Information("🚀 Starting web application");
+  app.Run();
+}
+catch (Exception ex)
+{
+  Log.Fatal(ex, "❌ Application terminated unexpectedly");
+}
+finally
+{
+  Log.CloseAndFlush();
+}

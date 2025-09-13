@@ -12,6 +12,8 @@ public class ErrorHandlingMiddleware(ILogger<ErrorHandlingMiddleware> logger) : 
   public async ValueTask<bool> TryHandleAsync(HttpContext httpContext, Exception exception, CancellationToken cancellationToken)
   {
 
+    _logger.LogError(exception, "Unhandled exception occurred while processing request {Path}", httpContext.Request.Path);
+
     var problemDetails = exception switch
     {
       AppException appException => new ProblemDetails

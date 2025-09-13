@@ -3,107 +3,74 @@ using Blog4uSlf.Application.Abstractions.Services;
 using Blog4uSlf.Application.Exceptions;
 using Blog4uSlf.Application.Exceptions.Posts;
 using Blog4uSlf.Domain.Entities.Posts;
+using Microsoft.Extensions.Logging;
 
 namespace Blog4uSlf.Application.Services;
 
-public class PostService(IPostRepository postRepository) : IPostService
+public class PostService(IPostRepository postRepository, ILogger<PostService> logger) : IPostService
 {
   private readonly IPostRepository _postRepository = postRepository;
+  private readonly ILogger<PostService> _logger = logger;
 
   public async Task<Post> CreateAsync(Post postCreateDto, CancellationToken ct)
   {
-    try
-    {
+    _logger.LogInformation("Creating new post with Title: {Title}", postCreateDto.Title);
 
-      var slugAlreadyExists = await _postRepository.SlugExistsAsync(postCreateDto.Slug, ct);
+    var slugAlreadyExists = await _postRepository.SlugExistsAsync(postCreateDto.Slug, ct);
 
-      if (slugAlreadyExists)
-      {
-        throw new PostDuplicateSlugException(postCreateDto.Slug);
-      }
+    if (slugAlreadyExists)
+    {
+      throw new PostDuplicateSlugException(postCreateDto.Slug);
+    }
 
-      var createdPost = await _postRepository.AddAsync(postCreateDto, ct);
+    var createdPost = await _postRepository.AddAsync(postCreateDto, ct);
 
-      return createdPost;
-    }
-    catch (PostDuplicateSlugException)
-    {
-      throw;
-    }
-    catch (AppException)
-    {
-      throw;
-    }
-    catch (Exception)
-    {
-      throw;
-    }
+    return createdPost;
   }
 
   public async Task DeleteByIdAsync(Guid id, CancellationToken ct)
   {
-    try
-    {
-      await GetByIdOrThrowNotFoundErrorAsync(id, ct);
-      await _postRepository.DeleteByIdAsync(id, ct);
-    }
-    catch (PostNotFoundException)
-    {
-      throw;
-    }
-    catch (AppException)
-    {
-      throw;
-    }
-    catch (Exception)
-    {
-      throw;
-    }
+    _logger.LogInformation("Deleting post with ID: {PostId}", id);
+
+    await GetByIdOrThrowNotFoundErrorAsync(id, ct);
+    await _postRepository.DeleteByIdAsync(id, ct);
   }
 
   public async Task<Post> GetByIdAsync(Guid id, CancellationToken ct)
   {
-    try
-    {
-      var post = await _postRepository.GetByIdAsync(id, ct);
+    _logger.LogInformation("Fetching post with ID: {PostId}", id);
 
-      return post ?? throw new PostNotFoundException(id);
-    }
-    catch (PostNotFoundException)
+    var post = await _postRepository.GetByIdAsync(id, ct);
+
+    if (post == null)
     {
-      throw;
+      _logger.LogWarning("Post with ID: {PostId} not found", id);
+
+      throw new PostNotFoundException(id);
     }
-    catch (AppException)
-    {
-      throw;
-    }
-    catch (Exception)
-    {
-      throw;
-    }
+
+    return post;
   }
 
   public async Task<Post> GetByIdOrThrowNotFoundErrorAsync(Guid id, CancellationToken ct)
   {
     var post = await _postRepository.GetByIdAsync(id, ct);
 
-    return post ?? throw new PostNotFoundException(id);
+    if (post == null)
+    {
+      _logger.LogWarning("Post with ID: {PostId} not found", id);
+
+      throw new PostNotFoundException(id);
+    }
+
+    return post;
   }
 
   public async Task<IReadOnlyCollection<Post>> GetLatestsAsync(int take, int skip, CancellationToken ct)
   {
-    try
-    {
-      return await _postRepository.GetLatestAsync(take, skip, ct);
-    }
-    catch (AppException)
-    {
-      throw;
-    }
-    catch (Exception)
-    {
-      throw;
-    }
+    _logger.LogInformation("Fetching latest posts with skip {Skip}, take {Take}", skip, take);
+
+    return await _postRepository.GetLatestAsync(take, skip, ct);
   }
 
   public async Task<bool> SlugExistsAsync(string slug, CancellationToken ct)
@@ -113,24 +80,12 @@ public class PostService(IPostRepository postRepository) : IPostService
 
   public async Task<Post> UpdateByIdAsync(Guid id, Post postUpdateDto, CancellationToken ct)
   {
-    try
-    {
-      await GetByIdOrThrowNotFoundErrorAsync(id, ct);
-      var updatedPost = await _postRepository.UpdateByIdAsync(id, postUpdateDto, ct);
+    _logger.LogInformation("Updating post with ID: {PostId}", id);
 
-      return updatedPost;
-    }
-    catch (PostNotFoundException)
-    {
-      throw;
-    }
-    catch (AppException)
-    {
-      throw;
-    }
-    catch (Exception)
-    {
-      throw;
-    }
+    await GetByIdOrThrowNotFoundErrorAsync(id, ct);
+
+    var updatedPost = await _postRepository.UpdateByIdAsync(id, postUpdateDto, ct);
+
+    return updatedPost;
   }
 }
