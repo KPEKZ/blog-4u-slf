@@ -1,5 +1,3 @@
-using Blog4uSlf.Domain.Entities.Posts;
-
 namespace Blog4uSlf.Application.Exceptions.Posts;
 
 public sealed class PostNotFoundException : AppException

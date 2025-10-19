@@ -1,4 +1,4 @@
-using Blog4uSlf.Domain.Entities.Posts;
+using Blog4uSlf.Domain.Models.Posts;
 
 namespace Blog4uSlf.Application.Abstractions.Repositories;
 

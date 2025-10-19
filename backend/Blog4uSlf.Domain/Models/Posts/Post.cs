@@ -1,4 +1,4 @@
-namespace Blog4uSlf.Domain.Entities.Posts;
+namespace Blog4uSlf.Domain.Models.Posts;
 
 /// <summary>
 /// Represents a blog post entity.
@@ -35,6 +35,8 @@ public class Post(string title, string content, string? slug)
   /// </summary>
   public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
 
+  public Post() : this(string.Empty, string.Empty, null) { }
+
   public Post Update(string? title, string? content, string? slug)
   {
     if (title is not null) Title = title;
@@ -45,6 +47,4 @@ public class Post(string title, string content, string? slug)
 
     return this;
   }
-
-  public Post() : this(string.Empty, string.Empty, null) { }
 }

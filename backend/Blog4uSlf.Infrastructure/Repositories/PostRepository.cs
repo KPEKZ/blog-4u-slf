@@ -1,9 +1,10 @@
 using System.Collections.ObjectModel;
 using Blog4uSlf.Application.Abstractions.Repositories;
-using Blog4uSlf.Domain.Entities.Posts;
+using Blog4uSlf.Domain.Models.Posts;
 using Blog4uSlf.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Mapster;
+using Blog4uSlf.Infrastructure.Persistence.Models;
 
 namespace Blog4uSlf.Infrastructure.Repositories;
 
@@ -13,16 +14,16 @@ public class PostRepository(BlogDbContext context) : IPostRepository
 
   public async Task<Post> AddAsync(Post postCreate, CancellationToken ct)
   {
-    var post = await _context.AddAsync(postCreate, ct);
+    var post = await _context.Posts.AddAsync(postCreate.Adapt<PostDb>(), ct);
 
     await _context.SaveChangesAsync(ct);
 
-    return post.Entity;
+    return post.Entity.Adapt<Post>();
   }
 
   public async Task DeleteByIdAsync(Guid id, CancellationToken ct)
   {
-    var post = await _context.FindAsync<Post>(id, ct);
+    var post = await _context.Posts.FindAsync(id, ct);
 
     if (post is not null)
     {
@@ -42,7 +43,7 @@ public class PostRepository(BlogDbContext context) : IPostRepository
       .Select(postDb => postDb.Adapt<Post>())
       .ToListAsync(ct);
 
-    return new ReadOnlyCollection<Post>(posts);
+    return posts.AsReadOnly();
   }
 
   public async Task<Post?> GetByIdAsync(Guid id, CancellationToken ct)

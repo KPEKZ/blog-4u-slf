@@ -1,8 +1,7 @@
 using Blog4uSlf.Application.Abstractions.Repositories;
 using Blog4uSlf.Application.Abstractions.Services;
-using Blog4uSlf.Application.Exceptions;
 using Blog4uSlf.Application.Exceptions.Posts;
-using Blog4uSlf.Domain.Entities.Posts;
+using Blog4uSlf.Domain.Models.Posts;
 using Microsoft.Extensions.Logging;
 
 namespace Blog4uSlf.Application.Services;
