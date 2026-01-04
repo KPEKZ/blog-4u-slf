@@ -1,7 +1,7 @@
-
 using Blog4uSlf.Application.Abstractions.Services;
-using Blog4uSlf.Application.Dto.Posts;
 using Blog4uSlf.Domain.Models.Posts;
+using Blog4uSlf.Web.Dtos.Common.Page;
+using Blog4uSlf.Web.Dtos.Posts;
 using Mapster;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
@@ -18,11 +18,11 @@ public class PostController(IPostService postService) : ControllerBase
 {
   private readonly IPostService _postService = postService;
 
-
   /// <summary>
   /// Retrieves post by ID.
   /// </summary>
-  /// <param name="cancellationToken">Cancellation token</param>
+  /// <param name="ct">Cancellation token</param>
+  /// <param name="id">Identifier of a post</param>
   /// <response code="200">Post retrieved successfully.</response>
   /// <response code="404">Post not found.</response>
   /// <response code="500">Internal server error.</response>
@@ -33,30 +33,35 @@ public class PostController(IPostService postService) : ControllerBase
 
   public async Task<IActionResult> GetById([FromRoute] Guid id, CancellationToken ct)
   {
-    var post = await _postService.GetByIdAsync(id, ct);
-    return post is null ? NotFound() : Ok(post.Adapt<PostDto>());
+    var post = await _postService.GetByIdOrThrowNotFoundErrorAsync(id, ct);
+
+    return Ok(post.Adapt<PostDto>());
   }
 
-
   /// <summary>
-  /// Retrieves the latest post.
+  /// Retrieves post page with pagination params.
   /// </summary>
-  /// <param name="cancellationToken">Cancellation token</param>
-  /// <response code="200">Posts retrieved successfully.</response>
+  /// <param name="pageQueryParamsDto">Pagination query params</param>
+  /// <param name="ct">Cancellation token</param>
+  /// <response code="200">Post retrieved successfully.</response>
   /// <response code="500">Internal server error.</response>
-  [HttpGet]
-  [SwaggerResponse(StatusCodes.Status200OK, type: typeof(IReadOnlyList<PostDto>), description: "Latest posts retrieved successfully.")]
+  [HttpGet("page")]
+  [SwaggerResponse(StatusCodes.Status200OK, type: typeof(PageDto<PostDto>), description: "Get posts' page retrieved successfully.")]
   [SwaggerResponse(StatusCodes.Status500InternalServerError, description: "Internal server error.")]
-  public async Task<IActionResult> GetLatests([FromQuery] int? take, [FromQuery] int? skip, CancellationToken ct)
+  public async Task<IActionResult> GetPostPage([FromQuery] PostPaginationPageQueryParamsDto pageQueryParamsDto, CancellationToken ct)
   {
-    var posts = await _postService.GetLatestsAsync(take ?? 50, skip ?? 0, ct);
-    return Ok(posts.Adapt<IReadOnlyList<PostDto>>());
+    var paginationParams = pageQueryParamsDto.Adapt<PostPaginationPageQueryParams>();
+    var page = await _postService.GetPageAsync(paginationParams, ct);
+    var pageDto = page.Adapt<PageDto<PostDto>>();
+
+    return Ok(pageDto);
   }
 
   /// <summary>
   /// Creates a new post.
   /// </summary>
-  /// <param name="cancellationToken">Cancellation token</param>
+  /// <param name="postDto">PostDto params</param>
+  /// <param name="ct">Cancellation token</param>
   /// <response code="201">Post created successfully.</response>
   /// <response code="500">Internal server error.</response>
   [HttpPost]
@@ -66,13 +71,16 @@ public class PostController(IPostService postService) : ControllerBase
   {
     var post = postDto.Adapt<Post>();
     var created = await _postService.CreateAsync(post, ct);
+
     return CreatedAtAction(nameof(GetById), new { id = created.Id }, created.Adapt<PostDto>());
   }
 
   /// <summary>
   /// Updates an existing post.
   /// </summary>
-  /// <param name="cancellationToken">Cancellation token</param>
+  /// <param name="id">Identifier of the post</param>
+  /// <param name="postDto">Post dto params</param>
+  /// <param name="ct">Cancellation token</param>
   /// <response code="200">Post updated successfully.</response>
   /// <response code="404">Post not found.</response>
   /// <response code="500">Internal server error.</response>
@@ -84,13 +92,15 @@ public class PostController(IPostService postService) : ControllerBase
   {
     var post = postDto.Adapt<Post>();
     var updated = await _postService.UpdateByIdAsync(id, post, ct);
+
     return Ok(updated.Adapt<PostDto>());
   }
 
   /// <summary>
   /// Deletes an existing post.
   /// </summary>
-  /// <param name="cancellationToken">Cancellation token</param>
+  /// <param name="id">Identifier of the post</param>
+  /// <param name="ct">Cancellation token</param>
   /// <response code="204">Post deleted successfully.</response>
   /// <response code="404">Post not found.</response>
   /// <response code="500">Internal server error.</response>
@@ -100,10 +110,8 @@ public class PostController(IPostService postService) : ControllerBase
   [SwaggerResponse(StatusCodes.Status500InternalServerError, description: "Internal server error.")]
   public async Task<IActionResult> DeletePostById([FromRoute] Guid id, CancellationToken ct)
   {
-    {
-      await _postService.DeleteByIdAsync(id, ct);
-      return NoContent();
-    }
-  }
+    await _postService.DeleteByIdAsync(id, ct);
 
+    return NoContent();
+  }
 }

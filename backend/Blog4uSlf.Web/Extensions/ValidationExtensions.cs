@@ -1,4 +1,4 @@
-using Blog4uSlf.Application.Validation.Posts;
+using Blog4uSlf.Web.Validation.Posts;
 using FluentValidation;
 
 namespace Blog4uSlf.Web.Extensions;
@@ -12,6 +12,7 @@ public static class ValidationExtensions
   {
     services.AddValidatorsFromAssemblyContaining<PostCreateDtoValidator>();
     services.AddValidatorsFromAssemblyContaining<PostUpdateDtoValidator>();
+    services.AddValidatorsFromAssemblyContaining<PostPageQueryValidator>();
 
     return services;
   }

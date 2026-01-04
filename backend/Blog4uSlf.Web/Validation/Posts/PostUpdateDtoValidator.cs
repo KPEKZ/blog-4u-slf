@@ -1,7 +1,7 @@
-using Blog4uSlf.Application.Dto.Posts;
+using Blog4uSlf.Web.Dtos.Posts;
 using FluentValidation;
 
-namespace Blog4uSlf.Application.Validation.Posts;
+namespace Blog4uSlf.Web.Validation.Posts;
 
 public class PostUpdateDtoValidator : AbstractValidator<PostUpdateDto>
 {

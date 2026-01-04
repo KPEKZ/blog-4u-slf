@@ -1,4 +1,4 @@
-using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi;
 
 namespace Blog4uSlf.Web.Extensions;
 

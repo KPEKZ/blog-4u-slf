@@ -1,4 +1,3 @@
-using System.Text.Json;
 using Blog4uSlf.Application.Exceptions;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
@@ -11,7 +10,6 @@ public class ErrorHandlingMiddleware(ILogger<ErrorHandlingMiddleware> logger) : 
 
   public async ValueTask<bool> TryHandleAsync(HttpContext httpContext, Exception exception, CancellationToken cancellationToken)
   {
-
     _logger.LogError(exception, "Unhandled exception occurred while processing request {Path}", httpContext.Request.Path);
 
     var problemDetails = exception switch

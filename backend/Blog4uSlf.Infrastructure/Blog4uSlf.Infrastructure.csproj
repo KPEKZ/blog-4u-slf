@@ -1,19 +1,15 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
-
   <ItemGroup>
-    <PackageReference Include="Mapster" Version="7.4.0" />
-    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.4" />
+    <PackageReference Include="Mapster" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" />
   </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\Blog4uSlf.Domain\Blog4uSlf.Domain.csproj" />
     <ProjectReference Include="..\Blog4uSlf.Application\Blog4uSlf.Application.csproj" />
   </ItemGroup>
-
 </Project>

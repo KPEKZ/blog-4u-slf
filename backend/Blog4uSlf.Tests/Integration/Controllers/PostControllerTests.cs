@@ -1,6 +1,6 @@
 using System.Net;
 using System.Net.Http.Json;
-using Blog4uSlf.Application.Dto.Posts;
+using Blog4uSlf.Web.Dtos.Posts;
 using FluentAssertions;
 using Microsoft.AspNetCore.Mvc.Testing;
 

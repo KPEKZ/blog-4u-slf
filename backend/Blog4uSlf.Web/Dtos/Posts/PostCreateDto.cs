@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
-namespace Blog4uSlf.Application.Dto.Posts;
+namespace Blog4uSlf.Web.Dtos.Posts;
 
 /// <summary>
 /// Data Transfer Object for creating a new blog post.

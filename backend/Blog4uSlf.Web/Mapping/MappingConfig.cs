@@ -1,7 +1,7 @@
-
-using Blog4uSlf.Application.Dto.Posts;
+using Blog4uSlf.Domain.Models.Common.Page;
 using Blog4uSlf.Domain.Models.Posts;
 using Blog4uSlf.Infrastructure.Persistence.Models;
+using Blog4uSlf.Web.Dtos.Posts;
 using Mapster;
 
 namespace Blog4uSlf.Web.Mapping;
@@ -25,11 +25,16 @@ public static class MappingConfig
     TypeAdapterConfig<PostUpdateDto, Post>
     .NewConfig()
     .MapToTargetWith((src, dest) => dest.Update(src.Title, src.Content, src.Slug));
+
+    TypeAdapterConfig<PostPaginationPageQueryParamsDto, PostPaginationPageQueryParams>
+      .NewConfig();
   }
 
   private static void MapFromDomainToApi()
   {
     TypeAdapterConfig<Post, PostDto>.NewConfig();
+
+    TypeAdapterConfig<Page<Post, IEnumerable<Post>>, Page<PostDto, IEnumerable<PostDto>>>.NewConfig();
   }
 
   private static void MapFromDomainToDb()

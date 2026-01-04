@@ -1,4 +1,4 @@
-namespace Blog4uSlf.Application.Dto.Posts;
+namespace Blog4uSlf.Web.Dtos.Posts;
 
 /// <summary>
 /// Data Transfer Object for updating a blog post.

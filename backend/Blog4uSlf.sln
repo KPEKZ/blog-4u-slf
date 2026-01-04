@@ -1,17 +1,17 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blog4uSlf.Application", "Blog4uSlf.Application\Blog4uSlf.Application.csproj", "{71F95C1D-033A-4F3B-8EA9-6F3F2C5DEE79}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blog4uSlf.Application", "Blog4uSlf.Application\Blog4uSlf.Application.csproj", "{71F95C1D-033A-4F3B-8EA9-6F3F2C5DEE79}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blog4uSlf.Domain", "Blog4uSlf.Domain\Blog4uSlf.Domain.csproj", "{2FD877C6-6490-4C8B-BB98-8A8F3B9F230F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blog4uSlf.Domain", "Blog4uSlf.Domain\Blog4uSlf.Domain.csproj", "{2FD877C6-6490-4C8B-BB98-8A8F3B9F230F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blog4uSlf.Infrastructure", "Blog4uSlf.Infrastructure\Blog4uSlf.Infrastructure.csproj", "{4E64F944-36CD-4DE6-87A1-468D73318F36}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blog4uSlf.Infrastructure", "Blog4uSlf.Infrastructure\Blog4uSlf.Infrastructure.csproj", "{4E64F944-36CD-4DE6-87A1-468D73318F36}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blog4uSlf.Web", "Blog4uSlf.Web\Blog4uSlf.Web.csproj", "{61828F4B-6367-458F-A2BD-FBECB913A5C6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blog4uSlf.Web", "Blog4uSlf.Web\Blog4uSlf.Web.csproj", "{61828F4B-6367-458F-A2BD-FBECB913A5C6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blog4uSlf.Tests", "Blog4uSlf.Tests\Blog4uSlf.Tests.csproj", "{E1FABDAE-77C9-4C9B-93F9-3DE0F8EF89DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blog4uSlf.Tests", "Blog4uSlf.Tests\Blog4uSlf.Tests.csproj", "{E1FABDAE-77C9-4C9B-93F9-3DE0F8EF89DD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
