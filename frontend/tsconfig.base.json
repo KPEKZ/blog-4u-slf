@@ -2,6 +2,7 @@
   "compileOnSave": false,
   "compilerOptions": {
     "rootDir": ".",
+    "strict": true,
     "sourceMap": true,
     "declaration": false,
     "moduleResolution": "node",
@@ -10,11 +11,21 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "esnext",
-    "lib": ["es2020", "dom"],
+    "lib": ["es2020", "dom", "esnext"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@blog-4u-slf/page/posts": ["libs/pages/posts/src/index.ts"],
+      "@blog-4u-slf/page/home": ["libs/pages/home/src/index.ts"],
+      "@blog-4u-slf/page/not-found": ["libs/pages/not-found/src/index.ts"],
+
+      "@blog-4u-slf/shared-types": ["libs/shared/types/src/index.ts"],
+      "@blog-4u-slf/entities/post": ["libs/entities/post/src/index.ts"],
+      "@blog-4u-slf/shared-config": ["libs/shared/config/src/index.ts"],
+      "@blog-4u-slf/shared-api": ["libs/shared/api/src/index.ts"],
+      "@blog-4u-slf/features/post": ["libs/features/post/src/index.ts"],
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

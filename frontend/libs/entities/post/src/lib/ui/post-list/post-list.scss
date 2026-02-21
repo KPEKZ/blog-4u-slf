@@ -1,0 +1,13 @@
+:host {
+  display: block;
+
+  .post-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+
+    .post-card {
+      width: 30%;
+    }
+  }
+}

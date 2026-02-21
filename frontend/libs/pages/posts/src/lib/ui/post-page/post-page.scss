@@ -1,0 +1,131 @@
+:host {
+  display: block;
+  height: 100vh;
+
+  @supports(height: 100dvh) {
+    height: 100dvh;
+  }
+
+  .post-page {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    padding: 1.5rem;
+    box-sizing: border-box;
+    height: 100%;
+  }
+}
+
+.post-page__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.post-page__title {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.post-page__subtitle {
+  margin: 0.25rem 0 0;
+  color: #6b7280;
+}
+
+.post-page__filters {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.75rem;
+  align-items: flex-end;
+}
+
+.post-page__filter,
+.post-page__select {
+  width: 100%;
+}
+
+.post-page__sort {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.5rem;
+}
+
+.post-page__content {
+  position: relative;
+  min-height: 320px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 1rem;
+  background: #fff;
+  flex: 1;
+}
+
+.post-page__error {
+  padding: 0.75rem 1rem;
+  color: #b91c1c;
+  background-color: #fef2f2;
+  border: 1px solid #fecdd3;
+  border-radius: 12px;
+}
+
+.post-page__empty {
+  color: #6b7280;
+}
+
+.post-page__table-wrapper {
+  overflow: auto;
+}
+
+.post-page__table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.post-page__table th,
+.post-page__table td {
+  padding: 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.post-page__table thead {
+  background: #f9fafb;
+}
+
+.post-page__title-cell {
+  min-width: 220px;
+}
+
+.post-page__title-line {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.post-page__content-preview {
+  color: #6b7280;
+  font-size: 0.875rem;
+  line-height: 1.2;
+}
+
+.post-page__cell-secondary {
+  color: #4b5563;
+  white-space: nowrap;
+}
+
+.post-page__footer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.post-page__page-size {
+  min-width: 160px;
+}
+
+.post-page__total {
+  color: #4b5563;
+}

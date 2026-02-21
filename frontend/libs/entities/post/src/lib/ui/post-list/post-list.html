@@ -1,0 +1,5 @@
+<div class="post-list">
+  @for (post of posts(); track post.id) {
+    <pe-post-card class="post-card" [post]="post"></pe-post-card>
+  }
+</div>

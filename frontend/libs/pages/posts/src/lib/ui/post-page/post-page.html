@@ -1,0 +1,166 @@
+<section class="post-page">
+  <header class="post-page__header">
+    <div>
+      <h1 class="post-page__title">Посты</h1>
+      <p class="post-page__subtitle">Пагинация, фильтрация и сортировка</p>
+    </div>
+    <button
+      type="button"
+      tuiButton
+      appearance="accent"
+      size="m"
+      (click)="refresh()"
+    >
+      Обновить
+    </button>
+  </header>
+
+  <div class="post-page__filters">
+    <lib-post-search></lib-post-search>
+
+    <!-- <tui-input
+      class="post-page__filter"
+      [ngModel]="filtersForm().title"
+      (ngModelChange)="onTitleFilterChange($event)"
+      placeholder="Часть заголовка"
+    >
+      Заголовок содержит
+    </tui-input>
+
+    <tui-input
+      class="post-page__filter"
+      [ngModel]="filtersForm().content"
+      (ngModelChange)="onContentFilterChange($event)"
+      placeholder="Фрагмент текста"
+    >
+      Текст содержит
+    </tui-input>
+
+    <tui-input
+      class="post-page__filter"
+      type="date"
+      [ngModel]="filtersForm().createdAfter"
+      (ngModelChange)="onCreatedAfterChange($event)"
+    >
+      Создан после
+    </tui-input>
+
+    <div class="post-page__sort">
+      <tui-select
+        class="post-page__select"
+        [ngModel]="sortField()"
+        (ngModelChange)="onSortFieldChange($event)"
+      >
+        Поле сортировки
+        <tui-data-list *tuiDataList>
+          @for (item of sortFields; track item.value) {
+            <button tuiOption [value]="item.value">
+              {{ item.label }}
+            </button>
+          }
+        </tui-data-list>
+      </tui-select>
+
+      <tui-select
+        class="post-page__select"
+        [ngModel]="sortOrder()"
+        (ngModelChange)="onOrderChange($event)"
+      >
+        Направление
+        <tui-data-list *tuiDataList>
+          @for (option of orderOptions; track option.value) {
+            <button tuiOption [value]="option.value">
+              {{ option.label }}
+            </button>
+          }
+        </tui-data-list>
+      </tui-select>
+    </div>
+
+    <button tuiButton appearance="flat" size="m" (click)="resetFilters()">
+      Сбросить фильтры
+    </button> -->
+  </div>
+
+  <tui-loader
+    class="post-page__content"
+    [overlay]="true"
+    [showLoader]="store.loading()"
+    size="xxl"
+  >
+    <pe-post-list [posts]="store.items()"></pe-post-list>
+  </tui-loader>
+
+  <!-- <tui-loader
+    class="post-page__content"
+    [overlay]="true"
+    [showLoader]="loading()"
+  >
+    @if (error()) {
+      <div class="post-page__error">{{ error() }}</div>
+    }
+
+    @if (!loading() && !items().length && !error()) {
+      <div class="post-page__empty">Посты не найдены</div>
+    }
+
+    @if (items().length) {
+      <div class="post-page__table-wrapper">
+        <table class="post-page__table">
+          <thead>
+            <tr>
+              <th>Заголовок</th>
+              <th>Слаг</th>
+              <th>Создан</th>
+              <th>Обновлён</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (post of items(); track post.id) {
+              <tr>
+                <td class="post-page__title-cell">
+                  <div class="post-page__title-line">{{ post.title }}</div>
+                  <div class="post-page__content-preview">
+                    {{ post.content | slice: 0:140 }}{{ post.content.length > 140 ? '…' : '' }}
+                  </div>
+                </td>
+                <td class="post-page__cell-secondary">{{ post.slug }}</td>
+                <td class="post-page__cell-secondary">
+                  {{ post.createdAt | date: 'dd.MM.yyyy HH:mm' }}
+                </td>
+                <td class="post-page__cell-secondary">
+                  {{ post.updatedAt | date: 'dd.MM.yyyy HH:mm' }}
+                </td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    }
+  </tui-loader> -->
+
+  @if (store.totalPages() > 0) {
+  <footer class="post-page__footer">
+    <tui-pagination
+      [length]="store.totalPages()"
+      [index]="store.query().pageIndex - 1"
+      (indexChange)="store.patchQuery({pageIndex: $event})"
+    ></tui-pagination>
+
+    <!-- <tui-select
+        class="post-page__page-size"
+        [ngModel]="store.query().pageSize"
+        (ngModelChange)="store.patchQuery({pageSize: $event})"
+      >
+        Постов на странице
+        <tui-data-list *tuiDataList>
+          @for (size of [5, 10, 15]; track size) {
+            <button tuiOption [value]="size">{{ size }}</button>
+          }
+        </tui-data-list>
+      </tui-select> -->
+
+    <div class="post-page__total">Всего: {{ store.totalCount() }}</div>
+  </footer>
+  }
+</section>

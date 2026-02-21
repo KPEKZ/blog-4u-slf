@@ -1,0 +1,21 @@
+{
+  "name": "post-entities",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/entities/post/src",
+  "prefix": "pe",
+  "projectType": "library",
+  "tags": ["post", "post-entities"],
+  "targets": {
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/entities/post/jest.config.cts",
+        "tsConfig": "libs/entities/post/tsconfig.spec.json"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    }
+  }
+}

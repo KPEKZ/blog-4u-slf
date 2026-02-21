@@ -1,0 +1,21 @@
+{
+  "name": "post-page",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/pages/posts/src",
+  "prefix": "pg",
+  "projectType": "library",
+  "tags": ["pg"],
+  "targets": {
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/pages/posts/jest.config.cts",
+        "tsConfig": "libs/pages/posts/tsconfig.spec.json"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    }
+  }
+}

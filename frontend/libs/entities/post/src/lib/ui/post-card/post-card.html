@@ -1,0 +1,18 @@
+<a
+  class="post"
+  tuiAppearance="floating"
+  tuiSurface="floating"
+  [routerLink]="['/posts', post().id]"
+  tuiCardLarge
+>
+  <header
+    class="post__header"
+    tuiHeader
+  >
+    <h2 tuiTitle>{{post().title}}</h2>
+  </header>
+
+  <div class="post__content">
+    {{post().content}}
+  </div>
+</a>

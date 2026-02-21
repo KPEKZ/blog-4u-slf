@@ -40,7 +40,10 @@ builder.Services.AddFluentValidationAutoValidation();
 builder.Services.AddInfrastructure(builder.Configuration);
 
 // Cors
-builder.Services.AddCorsPolicy("AllowAllOrigins");
+builder.Services.AddCors(options => options.AddPolicy("AllowAll", policy =>
+{
+  policy.WithOrigins("http://localhost:4200").AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+}));
 
 builder.Services.AddProblemDetails();
 builder.Services.AddExceptionHandler<ErrorHandlingMiddleware>();
@@ -76,7 +79,10 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseCors("AllowAll");
+
 app.UseOpenApiWithSwaggerUi();
+
 
 app.MapControllers();
 

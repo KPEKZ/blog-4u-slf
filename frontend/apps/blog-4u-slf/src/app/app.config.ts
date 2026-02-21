@@ -1,5 +1,6 @@
 import {
   ApplicationConfig,
+  isDevMode,
   provideBrowserGlobalErrorListeners,
   provideZoneChangeDetection,
 } from '@angular/core';
@@ -13,6 +14,8 @@ import { provideEffects } from '@ngrx/effects';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideEventPlugins } from '@taiga-ui/event-plugins';
 import { provideStore } from '@ngrx/store';
+import { provideDefaultClient } from '@blog-4u-slf/entities/post';
+import { environmentDev, provideEnvironment } from '@blog-4u-slf/shared-config';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -22,6 +25,10 @@ export const appConfig: ApplicationConfig = {
     provideBrowserGlobalErrorListeners(),
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(appRoutes),
+    provideEnvironment(),
+    provideDefaultClient({
+      basePath: environmentDev.apiUrl
+    }),
     provideEffects(),
     provideStore(),
   ],
