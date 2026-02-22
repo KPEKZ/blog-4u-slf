@@ -1,6 +1,7 @@
 services:
-  pg:
+  db:
     image: postgres:17.6
+    container_name: blog_db
     environment:
       POSTGRES_USER: blog
       POSTGRES_PASSWORD: blog
@@ -9,6 +10,42 @@ services:
       - "5432:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
+    networks:
+      - backend-db
+
+  backend:
+    build:
+      context: ..
+      dockerfile: docker/backend.Dockerfile
+    container_name: blog_backend
+    environment:
+      - ConnectionStrings__DefaultConnection=Host=db;Port=5432;Database=blogdb;Username=blog;Password=blog
+      - ASPNETCORE_ENVIRONMENT=Production
+    depends_on:
+      - db
+    ports:
+      - "5125:5125"
+    networks:
+      - backend-db
+      - frontend-backend
+
+  client:
+    build:
+      context: ..
+      dockerfile: docker/frontend.Dockerfile
+    container_name: blog_frontend
+    ports:
+      - "4200:4200"
+    depends_on:
+      - backend
+    networks:
+      - frontend-backend
+
+networks:
+  backend-db:
+    driver: bridge
+  frontend-backend:
+    driver: bridge
 
 volumes:
   pgdata:

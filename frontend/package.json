@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "start:dev": "nx serve blog-4u-slf",
+    "start:dev": "npx nx serve blog-4u-slf",
+    "start:prod": "npx nx serve blog-4u-slf --prod --host 0.0.0.0",
     "gen:api": "ng-openapi -c openapi-config.ts"
   },
   "private": true,

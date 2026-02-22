@@ -1,0 +1,54 @@
+
+# GIT
+.git
+.gitignore
+
+
+# NODEJS
+node_modules
+**/node_modules
+.pnpm-store
+
+# NX / Angular
+.nx
+nx.json
+.angular
+dist
+.cache
+
+# ENV
+.env
+.env.*
+*.local
+data/
+.editorconfig
+**/AGENTS.md/
+
+# scripts
+.gitlab-ci.yml
+scripts/
+docker/
+.dockerignore
+
+# backend
+**/bin/
+**/obj/
+**/appsettings.Development.json
+backend/*.sln.dotSettings
+backend/.baseconfig
+
+# IDE configs
+.idea
+.vscode
+.cursor
+.DS_Store
+.zed
+
+# Logs
+npm-debug.log*
+yarn-error.log*
+yarn-debug.log*
+coverage/
+*.log
+
+Thumbs.db
