@@ -5,6 +5,8 @@
   "scripts": {
     "start:dev": "npx nx serve blog-4u-slf",
     "start:prod": "npx nx serve blog-4u-slf --prod --host 0.0.0.0",
+    "build": "npx nx run-many --target=build --all",
+    "tauri": "tauri",
     "gen:api": "ng-openapi -c openapi-config.ts"
   },
   "private": true,
@@ -62,6 +64,7 @@
     "@swc-node/register": "1.11.1",
     "@swc/core": "1.15.8",
     "@swc/helpers": "0.5.18",
+    "@tauri-apps/cli": "^2.10.0",
     "@types/express": "^4.17.21",
     "@types/jest": "30.0.0",
     "@types/lodash-es": "^4.17.12",
